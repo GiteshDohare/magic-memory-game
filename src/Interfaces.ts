@@ -1,4 +1,5 @@
 export interface Card {
     src: string,
-    id: string
+    id: string,
+    matched: boolean
 }

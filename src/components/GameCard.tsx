@@ -12,19 +12,30 @@ const useStyles = makeStyles({
             display: 'block',
             border: '2px solid #fff',
             borderRadius: 6
-        }
+        },
 
+        '& .front': {
+            transform: 'rotateY(90deg)',
+            position: 'absolute'
+        }
+    },
+
+    flipped: {
+        '& .front':{
+            transform: 'rotateY(0deg)',
+        }
     }
 })
 
-const GameCard = ({src}: Partial<Card>) => {
+const GameCard = ({card, handleChoice, flipped}: { card: Card, handleChoice: any, flipped: boolean }) => {
     const classes = useStyles();
 
     return (
         <div className={classes.card}>
-            <div>
-                <img src={src} className="front" alt="card front"/>
-                <img src="/images/cover.png" className="back" alt="card back"/>
+            <div className={flipped ? classes.flipped : ""}>
+                <img src={card.src} className="front" alt="card front"/>
+                <img src="/images/cover.png" className="back" alt="card back"
+                     onClick={() => handleChoice(card)}/>
             </div>
         </div>
     );
