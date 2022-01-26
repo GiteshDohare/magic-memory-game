@@ -16,13 +16,25 @@ const useStyles = makeStyles({
 
         '& .front': {
             transform: 'rotateY(90deg)',
-            position: 'absolute'
+            position: 'absolute',
+            transition: 'all ease-in 0.2s',
+        },
+
+        '& .back': {
+            transition: 'all ease-in 0.2s',
+            transitionDelay: '0.2s'
         }
     },
 
     flipped: {
-        '& .front':{
+        '& .front': {
             transform: 'rotateY(0deg)',
+            transitionDelay: '0.2s'
+        },
+
+        '& .back': {
+            transform: 'rotateY(90deg)',
+            transitionDelay: '0s'
         }
     }
 })
