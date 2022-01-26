@@ -39,15 +39,20 @@ const useStyles = makeStyles({
     }
 })
 
-const GameCard = ({card, handleChoice, flipped}: { card: Card, handleChoice: any, flipped: boolean }) => {
+const GameCard = ({card, handleChoice, flipped, disabled}: { card: Card, handleChoice: any, flipped: boolean, disabled: boolean }) => {
     const classes = useStyles();
 
+    const handleClick = () => {
+        if(!disabled) {
+            handleChoice(card)
+        }
+    }
     return (
         <div className={classes.card}>
             <div className={flipped ? classes.flipped : ""}>
                 <img src={card.src} className="front" alt="card front"/>
                 <img src="/images/cover.png" className="back" alt="card back"
-                     onClick={() => handleChoice(card)}/>
+                     onClick={handleClick}/>
             </div>
         </div>
     );
